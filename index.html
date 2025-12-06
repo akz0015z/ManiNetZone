@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ManiNet Zone – Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body data-page="login">
+  <div id="navbar"></div>
+
+  <main class="page-container">
+    <section class="auth-card">
+      <h1 class="app-title">ManiNet Zone</h1>
+      <h2>Login</h2>
+
+      <form id="loginForm">
+        <label>
+          Email
+          <input type="email" id="loginEmail" required />
+        </label>
+
+        <label>
+          Password
+          <input type="password" id="loginPassword" required />
+        </label>
+
+        <button type="submit" class="btn primary">Login</button>
+      </form>
+
+      <p class="muted">
+        Don’t have an account?
+        <a href="signup.html">Sign up</a>
+      </p>
+    </section>
+  </main>
+
+  <!-- Firebase & app scripts -->
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-storage-compat.js"></script>
+
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

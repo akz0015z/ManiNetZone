@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ManiNet Zone – Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body data-page="hub">
+  <!-- Shared navbar injected by navbar.js -->
+  <div id="navbar"></div>
+
+  <main class="hub-container">
+    <section class="hub-content">
+
+      <h1>Welcome back, <span id="hubDisplayName">User</span> 👋</h1>
+      <p class="hub-subtext">Choose a tool below to start using ManiNet Zone.</p>
+
+      <!-- Centered Buttons -->
+      <div class="hub-buttons">
+        <a href="pages/typing-test.html" class="hub-btn">Typing Speed Test</a>
+        <a href="pages/memory-game.html" class="hub-btn">Memory Card Game</a>
+        <a href="pages/guess-game.html" class="hub-btn">Guess Game</a>
+        <a href="pages/chat.html" class="hub-btn">Chatroom</a>
+      </div>
+
+      <!-- Weather Card -->
+      <section class="hub-card">
+        <h2>Current Weather</h2>
+        <p>Your location</p>
+        <div id="weatherContent">Loading weather…</div>
+      </section>
+
+      <!-- Stats Card -->
+      <section class="hub-card">
+        <h2>Quick Stats</h2>
+        <ul>
+          <li><span id="statQuizAttempts">0</span> quizzes completed</li>
+          <li><span id="statTypingSessions">0</span> typing tests taken</li>
+          <li><span id="statMessagesSent">0</span> chat messages</li>
+        </ul>
+      </section>
+
+    </section>
+  </main>
+
+  <!-- Firebase + scripts -->
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-storage-compat.js"></script>
+
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/hub.js"></script>
+</body>
+</html>
