@@ -9,7 +9,7 @@ resize();
 
 window.addEventListener("resize", resize);
 
-// Generate sparkle particles
+// adding sparkle particles
 const particles = [];
 const count = 60;
 

@@ -85,7 +85,8 @@ function loadNavbar() {
   if (!navbar) return;
 
   const page = document.body.getAttribute("data-page");
-  const showNav = page !== "login" && page !== "signup";
+  const showNav = true;
+
 
   if (!showNav) {
     navbar.innerHTML = "";

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ManiNet Zone – Chatroom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/chat.css" />
+</head>
+
+<body data-page="chat" class="hub-wrapper">
+<canvas id="particles"></canvas>
+
+<div id="navbar"></div>
+
+<main class="chat-container">
+
+  <h1 class="chat-title">Public Chatroom</h1>
+
+  <div id="chatMessages" class="chat-box">
+    <p class="muted">Loading messages…</p>
+  </div>
+
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Type a message..." />
+    <button id="sendBtn" class="btn">Send</button>
+  </div>
+
+  <button id="clearLocalBtn" class="btn small danger">Clear Chat (Local Only)</button>
+
+</main>
+
+
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
+
+<script src="../assets/js/firebase-config.js"></script>
+<script src="../assets/js/navbar.js"></script>
+<script src="../assets/js/auth.js"></script>
+<script src="../assets/js/chat.js"></script>
+<script src="../assets/js/particles.js"></script>
+
+</body>
+</html>

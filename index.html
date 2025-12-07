@@ -6,7 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="assets/css/main.css" />
 </head>
+
 <body data-page="login">
+
+  <canvas id="particles"></canvas>
+
+ 
   <div id="navbar"></div>
 
   <main class="page-container">
@@ -30,19 +35,20 @@
 
       <p class="muted">
         Don’t have an account?
-        <a href="signup.html">Sign up</a>
+        <a href="signup.html">Create one</a>
       </p>
     </section>
   </main>
 
-  <!-- Firebase & app scripts -->
+  <!-- Firebase + Scripts -->
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-storage-compat.js"></script>
 
   <script src="assets/js/firebase-config.js"></script>
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/auth.js"></script>
+  <script src="assets/js/particles.js"></script> 
+
 </body>
 </html>
