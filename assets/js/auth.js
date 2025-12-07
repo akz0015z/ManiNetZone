@@ -1,6 +1,4 @@
-// assets/js/auth.js
-
-// Helper: redirect if not logged in
+// redirect if not logged in
 function requireAuth() {
   auth.onAuthStateChanged((user) => {
     const page = document.body.getAttribute("data-page");
@@ -9,22 +7,28 @@ function requireAuth() {
       // allow login/signup pages without auth
       if (page === "login" || page === "signup") return;
       window.location.href = "index.html";
-    } else {
-      // you can load user profile, avatar, etc here
-      if (window.loadUserProfile) {
-        window.loadUserProfile(user);
-      }
+      return;
+    }
+
+    
+    if (page === "settings" && typeof window.loadUserProfile === "function") {
+      window.loadUserProfile(user);
     }
   });
 }
 
-// Called on pages that require auth
+// called on pages that require auth
 document.addEventListener("DOMContentLoaded", () => {
   const page = document.body.getAttribute("data-page");
+
+  // apply auth check everywhere except login/signup
   if (page !== "login" && page !== "signup") {
     requireAuth();
   }
 
+  
+  // LOGIN HANDLER
+  
   const loginForm = document.getElementById("loginForm");
   if (loginForm) {
     loginForm.addEventListener("submit", async (e) => {
@@ -41,6 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  
+  // SIGNUP HANDLER
+  
   const signupForm = document.getElementById("signupForm");
   if (signupForm) {
     signupForm.addEventListener("submit", async (e) => {
@@ -51,12 +58,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         const cred = await auth.createUserWithEmailAndPassword(email, password);
+
         await db.collection("users").doc(cred.user.uid).set({
           email,
           username,
           displayName: username,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         });
+
         window.location.href = "hub.html";
       } catch (err) {
         alert("Signup failed: " + err.message);

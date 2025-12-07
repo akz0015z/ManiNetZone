@@ -6,40 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../assets/css/main.css" />
 </head>
-<body data-page="settings">
-  <!-- Shared navbar -->
+
+
+<body data-page="settings" class="hub-wrapper">
+<canvas id="particles"></canvas>
+
+
+
+  
   <div id="navbar"></div>
 
-  <main class="page-container">
+  <main class="page-container settings-container">
     <h1>Security & Settings</h1>
     <p class="muted">
       Manage your account, security, and personalisation options.
     </p>
 
     <div class="settings-grid">
-      <!-- PROFILE SECTION -->
+
+      <!-- profile selection -->
       <section class="card settings-card">
         <h2 class="card-title">Profile</h2>
 
-        <div class="profile-row">
-          <img id="settingsAvatar" src="../assets/img/default-avatar.png" class="settings-avatar" alt="Profile picture" />
-          <div>
-            <p><strong>Display name:</strong> <span id="currentDisplayName">Loading…</span></p>
-            <p><strong>Username:</strong> <span id="currentUsername">Loading…</span></p>
-            <p><strong>Email:</strong> <span id="currentEmail">Loading…</span></p>
-          </div>
-        </div>
-
-        <form id="avatarForm" class="settings-form">
-          <label>
-            Change profile picture (PNG/JPG)
-            <input type="file" id="avatarFile" accept="image/png, image/jpeg" />
-          </label>
-          <button type="submit" class="btn small">Upload New Avatar</button>
-        </form>
+        <p><strong>Display name:</strong> <span id="currentDisplayName">Loading…</span></p>
+        <p><strong>Username:</strong> <span id="currentUsername">Loading…</span></p>
+        <p><strong>Email:</strong> <span id="currentEmail">Loading…</span></p>
       </section>
 
-      <!-- THEME SECTION -->
+      <!-- theme selection -->
       <section class="card settings-card">
         <h2 class="card-title">Appearance</h2>
 
@@ -55,10 +49,10 @@
           <label>
             Background style
             <select id="backgroundSelect">
-              <option value="cyber">Cyber Grid</option>
-              <option value="neon">Neon Glow</option>
-              <option value="gradient">Soft Gradient</option>
-              <option value="matrix">Matrix Rain</option>
+              <option value="sky">Sky Blue + Sparkles</option>
+              <option value="pink">Pink + Sparkles</option>
+              <option value="black">Black + White Sparkles</option>
+              <option value="grey">Grey + Sparkles</option>
             </select>
           </label>
 
@@ -68,7 +62,7 @@
         </div>
       </section>
 
-      <!-- IDENTITY SECTION -->
+      <!-- id section -->
       <section class="card settings-card">
         <h2 class="card-title">Identity</h2>
 
@@ -95,63 +89,77 @@
         </form>
       </section>
 
-      <!-- SECURITY SECTION -->
-      <section class="card settings-card">
-        <h2 class="card-title">Security</h2>
+      <!-- security section -->
+<section class="card settings-card">
+  <h2 class="card-title">Security</h2>
 
-        <form id="passwordForm" class="settings-form">
-          <label>
-            Current password
-            <input type="password" id="currentPassword" />
-          </label>
-          <label>
-            New password
-            <input type="password" id="newPassword" />
-          </label>
-          <button type="submit" class="btn small">
-            Change Password
-          </button>
-        </form>
+  
+  <form id="passwordForm" class="settings-form">
+    <label>
+      Current password
+      <input type="password" id="currentPassword" />
+    </label>
 
-        <form id="emailForm" class="settings-form">
-          <label>
-            Confirm password
-            <input type="password" id="confirmEmailPassword" />
-          </label>
-          <label>
-            New email address
-            <input type="email" id="newEmail" />
-          </label>
-          <button type="submit" class="btn small">
-            Change Email
-          </button>
-        </form>
+    <label>
+      New password
+      <input type="password" id="newPassword" />
+    </label>
 
-        <hr class="settings-divider" />
+    
+    <label>
+      Confirm password
+      <input type="password" id="confirmPassword" />
+    </label>
 
-        <div class="settings-form">
-          <label class="toggle-row">
-            <input type="checkbox" id="twoFactorToggle" />
-            <span>Enable Two-Factor Authentication (2FA)</span>
-          </label>
+    
+    <button type="submit" class="btn small">
+      Change Password
+    </button>
+  </form>
 
-          <button id="manageSessionsBtn" class="btn small">
-            Log out of all devices
-          </button>
-        </div>
-      </section>
-    </div>
-  </main>
+  <form id="emailForm" class="settings-form">
+  <label>
+    New email address
+    <input type="email" id="newEmail" />
+  </label>
+
+  <label>
+    Confirm password
+    <input type="password" id="confirmEmailPassword" />
+  </label>
+
+  <button type="submit" class="btn small">
+    Change Email
+  </button>
+</form>
+
+
+  <hr class="settings-divider" />
+
+  <div class="settings-form">
+    <label class="toggle-row">
+      <input type="checkbox" id="twoFactorToggle" />
+      <span>Enable Two-Factor Authentication (2FA)</span>
+    </label>
+
+    <button id="manageSessionsBtn" class="btn small">
+      Log out of all devices
+    </button>
+  </div>
+</section>
+
 
   <!-- Firebase + scripts -->
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-storage-compat.js"></script>
 
   <script src="../assets/js/firebase-config.js"></script>
   <script src="../assets/js/navbar.js"></script>
   <script src="../assets/js/auth.js"></script>
   <script src="../assets/js/settings.js"></script>
+  <script src="../assets/js/particles.js"></script>
+
+
 </body>
 </html>

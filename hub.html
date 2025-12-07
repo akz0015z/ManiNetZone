@@ -6,42 +6,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="assets/css/main.css" />
 </head>
+
 <body data-page="hub">
-  <!-- Shared navbar injected by navbar.js -->
+
+  <!-- sparkles background -->
+  <canvas id="particles"></canvas>
+
+  
   <div id="navbar"></div>
 
-  <main class="hub-container">
-    <section class="hub-content">
+  
+  <main class="hub-wrapper">
 
+    <!-- left card -->
+    <section class="hub-side-card left-card">
+      <h2>Current Weather</h2>
+      <p>Your location</p>
+      <div id="weatherContent">Loading weather...</div>
+    </section>
+
+    <!-- right card -->
+    <section class="hub-side-card right-card">
+      <h2>Quick Stats</h2>
+      <ul>
+        <li><span id="statQuizAttempts">0</span> quizzes completed</li>
+        <li><span id="statTypingSessions">0</span> typing tests taken</li>
+        <li><span id="statMessagesSent">0</span> chat messages</li>
+      </ul>
+    </section>
+
+    <!-- Center content -->
+    <section class="hub-center">
       <h1>Welcome back, <span id="hubDisplayName">User</span> 👋</h1>
       <p class="hub-subtext">Choose a tool below to start using ManiNet Zone.</p>
 
-      <!-- Centered Buttons -->
-      <div class="hub-buttons">
-        <a href="pages/typing-test.html" class="hub-btn">Typing Speed Test</a>
-        <a href="pages/memory-game.html" class="hub-btn">Memory Card Game</a>
-        <a href="pages/guess-game.html" class="hub-btn">Guess Game</a>
-        <a href="pages/chat.html" class="hub-btn">Chatroom</a>
+      <div class="feature-box-grid">
+
+        <div class="feature-box">
+          <img src="assets/img/typing.png" alt="Typing Test" class="feature-img">
+          <button class="feature-btn" onclick="location.href='pages/typing-test.html'">Typing Speed Test</button>
+        </div>
+
+        <div class="feature-box">
+          <img src="assets/img/memory.png" alt="Memory Game" class="feature-img">
+          <button class="feature-btn" onclick="location.href='pages/memory-game.html'">Memory Card Game</button>
+        </div>
+
+        <div class="feature-box">
+          <img src="assets/img/quiz.png" alt="Quiz Game" class="feature-img">
+          <button class="feature-btn" onclick="location.href='pages/guess-game.html'">Quiz Guess Game</button>
+        </div>
+
+        <div class="feature-box">
+          <img src="assets/img/chat.png" alt="Chatroom" class="feature-img">
+          <button class="feature-btn" onclick="location.href='pages/chat.html'">Chatroom</button>
+        </div>
+
       </div>
-
-      <!-- Weather Card -->
-      <section class="hub-card">
-        <h2>Current Weather</h2>
-        <p>Your location</p>
-        <div id="weatherContent">Loading weather…</div>
-      </section>
-
-      <!-- Stats Card -->
-      <section class="hub-card">
-        <h2>Quick Stats</h2>
-        <ul>
-          <li><span id="statQuizAttempts">0</span> quizzes completed</li>
-          <li><span id="statTypingSessions">0</span> typing tests taken</li>
-          <li><span id="statMessagesSent">0</span> chat messages</li>
-        </ul>
-      </section>
-
     </section>
+
   </main>
 
   <!-- Firebase + scripts -->
@@ -54,5 +77,11 @@
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/auth.js"></script>
   <script src="assets/js/hub.js"></script>
+  <script src="assets/js/weather.js"></script>
+
+
+  
+  <script src="assets/js/particles.js"></script>
+
 </body>
 </html>
