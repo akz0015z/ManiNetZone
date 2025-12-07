@@ -1,6 +1,7 @@
 // assets/js/weather.js
 
-const WEATHER_API_KEY = "fa064918b8490c520a9d852076c8ab54";  // Your API key
+// Read API key from external config file (ignored by Git)
+const WEATHER_API_KEY = window.WEATHER_API_KEY;
 
 /**
  * Load weather using browser location
@@ -8,6 +9,11 @@ const WEATHER_API_KEY = "fa064918b8490c520a9d852076c8ab54";  // Your API key
 function loadWeather() {
   const weatherBox = document.getElementById("weatherContent");
   if (!weatherBox) return;
+
+  if (!WEATHER_API_KEY) {
+    weatherBox.innerHTML = "<p>Weather API key missing.</p>";
+    return;
+  }
 
   if (!navigator.geolocation) {
     weatherBox.innerHTML = "<p>Location not supported.</p>";

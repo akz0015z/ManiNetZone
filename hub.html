@@ -12,20 +12,19 @@
   <!-- sparkles background -->
   <canvas id="particles"></canvas>
 
-  
+  <!-- Navbar -->
   <div id="navbar"></div>
 
-  
   <main class="hub-wrapper">
 
-    <!-- left card -->
+    <!-- LEFT Weather Card -->
     <section class="hub-side-card left-card">
       <h2>Current Weather</h2>
       <p>Your location</p>
       <div id="weatherContent">Loading weather...</div>
     </section>
 
-    <!-- right card -->
+    <!-- RIGHT Quick Stats Card -->
     <section class="hub-side-card right-card">
       <h2>Quick Stats</h2>
       <ul>
@@ -67,7 +66,7 @@
 
   </main>
 
-  <!-- Firebase + scripts -->
+  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
@@ -77,10 +76,12 @@
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/auth.js"></script>
   <script src="assets/js/hub.js"></script>
+
+  <!-- WEATHER (correct order: config first, weather second) -->
+  <script src="assets/js/weather-config.js"></script>
   <script src="assets/js/weather.js"></script>
 
-
-  
+  <!-- Sparkles -->
   <script src="assets/js/particles.js"></script>
 
 </body>
