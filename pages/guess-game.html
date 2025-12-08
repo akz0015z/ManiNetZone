@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ManiNet Zone – Quiz Selection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+
+<body data-page="guess-game">
+
+  <!-- Background Sparkles -->
+  <canvas id="particles"></canvas>
+
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <main class="quiz-wrapper">
+
+    <!-- LEFT SIDE -->
+    <div class="quiz-split left-side">
+      <div class="quiz-content">
+        <h2>Software Quizzes & Games</h2>
+        <p class="muted">Coming Soon!</p>
+
+        <button class="quiz-btn" onclick="location.href='software.html'">
+          Explore Software Quizzes
+        </button>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="quiz-split right-side">
+      <div class="quiz-content">
+        <h2>Cyber Quizzes & Games</h2>
+        <p class="muted">Coming Soon!</p>
+
+        <button class="quiz-btn" onclick="location.href='cyber.html'">
+          Explore Cyber Quizzes
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
+
+  <script src="../assets/js/firebase-config.js"></script>
+  <script src="../assets/js/navbar.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/particles.js"></script>
+
+</body>
+</html>

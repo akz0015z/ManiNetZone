@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Memory Card Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="../assets/css/main.css" />
+<style>
+  .memory-container {
+    max-width: 1100px;
+    margin: 120px auto;
+    text-align: center;
+  }
+
+  .memory-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: black;   
+  }
+
+  .memory-sub {
+    color: black;   
+    margin-bottom: 40px;
+    font-size: 1rem;
+  }
+
+  /* memory grid */
+  .memory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    padding: 30px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 16px;
+    backdrop-filter: blur(6px);
+  }
+
+  /* card placeholder */
+  .memory-card {
+    height: 130px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;    
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.25s ease;
+  }
+
+  .memory-card:hover {
+    transform: translateY(-6px);
+    background: linear-gradient(135deg, #1c2236, #2a3550);
+  }
+
+  .memory-stats {
+    margin-top: 30px;
+    font-size: 1.1rem;
+    color: black;   
+  }
+
+  .memory-stat-item {
+    margin: 6px 0;
+  }
+</style>
+
+</head>
+
+<body data-page="memory-game">
+  <canvas id="particles"></canvas>
+  <div id="navbar"></div>
+
+  <main class="memory-container">
+
+    <h1 class="memory-title">Memory Card Game</h1>
+    <p class="memory-sub">Match all the pairs as fast as you can — coming soon!</p>
+
+    <!-- memory grid ui -->
+    <div class="memory-grid">
+      <div class="memory-card">Card</div>
+      <div class="memory-card">Card</div>
+      <div class="memory-card">Card</div>
+      <div class="memory-card">Card</div>
+      <div class="memory-card">Card</div>
+      <div class="memory-card">Card</div>
+      <div class="memory-card">Card</div>
+      <div class="memory-card">Card</div>
+      <div class="memory-card">Card</div>
+      <div class="memory-card">Card</div>
+      <div class="memory-card">Card</div>
+      <div class="memory-card">Card</div>
+    </div>
+
+    <!-- placeholder for ui only right now) -->
+    <div class="memory-stats">
+      <div class="memory-stat-item">⏱ Time: <strong>00:00</strong></div>
+      <div class="memory-stat-item">🔁 Moves: <strong>0</strong></div>
+      <div class="memory-stat-item">⭐ Best Score: <strong>Coming soon</strong></div>
+    </div>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
+
+  <script src="../assets/js/firebase-config.js"></script>
+  <script src="../assets/js/navbar.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/particles.js"></script>
+
+</body>
+</html>

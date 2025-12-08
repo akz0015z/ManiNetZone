@@ -5,7 +5,6 @@ function applyAppearance(theme, background) {
   const page = body.getAttribute("data-page");
   const allowedPages = ["typing-test", "memory-game", "guess-game", "chat"];
 
-  // if not one of the 4 tool pages, reset and exit
   if (!allowedPages.includes(page)) {
     body.classList.remove(
       "theme-dark",
@@ -20,11 +19,9 @@ function applyAppearance(theme, background) {
     return;
   }
 
-  // theme
   body.classList.remove("theme-dark", "theme-light");
   body.classList.add(theme === "light" ? "theme-light" : "theme-dark");
 
-  // background selection
   body.classList.remove(
     "bg-sky-sparkles",
     "bg-pink-sparkles",
@@ -87,13 +84,11 @@ function loadNavbar() {
   const page = document.body.getAttribute("data-page");
   const showNav = true;
 
-
   if (!showNav) {
     navbar.innerHTML = "";
     return;
   }
 
-  
   const isSubPage = [
     "settings",
     "typing-test",
@@ -104,10 +99,7 @@ function loadNavbar() {
     "feedback",
   ].includes(page);
 
-  
   const imgBase = isSubPage ? ".." : ".";
-
-  
   const showSettingsIcon = page !== "settings";
 
   navbar.innerHTML = `
@@ -138,6 +130,25 @@ function loadNavbar() {
       </div>
     </nav>
   `;
+
+  // disabled nav links on login/signup ===
+  if (page === "login" || page === "signup") {
+    const navLinks = navbar.querySelectorAll("a");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const settingsBtn = document.getElementById("settingsBtn");
+
+    // hide logout + settings
+    if (logoutBtn) logoutBtn.style.display = "none";
+    if (settingsBtn) settingsBtn.style.display = "none";
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        alert("Log in or Sign up to access these features.");
+      });
+    });
+  }
+  // 
 
   const settingsBtn = document.getElementById("settingsBtn");
   if (settingsBtn) {
