@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "account","profile","status","message","chat","strong","simple",
     "complex","bonus","repeat","break","escape","delete","quick","slow",
     "wild","calm","idea","solve","build","change","adapt","improve",
-    "design","render","reset","start","stop","finish","stable","debug"
+    "design","render","reset","start","stop","finish","stable","debug","bully"
   ];
 
   const wordsElement = document.getElementById("words");
