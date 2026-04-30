@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Software Quiz Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+
+<body data-page="software-quiz">
+
+<!-- BACKGROUND -->
+<canvas id="particles"></canvas>
+
+<!-- NAVBAR -->
+<div id="navbar"></div>
+
+<!-- MAIN CONTENT -->
+<main class="quiz-hub-container">
+
+  <h1 class="quiz-hub-title">Software Quiz Hub</h1>
+  <p class="quiz-hub-sub">Choose a category to test your knowledge</p>
+
+  <div class="quiz-grid">
+
+    <div class="quiz-card">
+      <h2>🌐 Fun Web Development Quiz!</h2>
+
+      <img src="../assets/img/quiz-preview.png" class="quiz-preview-img" alt="Quiz Preview">
+
+      <p>Stuff on HTML, CSS, UI & frontend concepts!!</p>
+      
+      <button class="feature-btn" onclick="openModal('web')">Start Quiz</button>
+    </div>
+
+    <div class="quiz-card">
+      <h2>[Work in Progress]</h2>
+      <p>[Work in Progress]</p>
+      <button class="feature-btn" onclick="openModal('js')">Start Quiz</button>
+    </div>
+
+    <div class="quiz-card">
+      <h2>🧠 Algorithms</h2>
+      <p>[Work in Progress]</p>
+      <button class="feature-btn" onclick="openModal('algo')">Start Quiz</button>
+    </div>
+
+    <div class="quiz-card">
+      <h2> [Work in Progress]</h2>
+      <p>[Work in Progress]</p>
+      <button class="feature-btn" onclick="openModal('system')">Start Quiz</button>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- 🔥 QUIZ SETUP MODAL -->
+<div id="quizModal" class="quiz-modal hidden">
+
+  <div class="quiz-modal-box">
+
+    <h2>Quiz Setup</h2>
+
+    <!-- TIMER -->
+    <div class="modal-section">
+      <label>
+        <input type="checkbox" id="timerToggle">
+        Enable Timer
+      </label>
+
+      <select id="timerSelect" disabled>
+        <option value="10">10 seconds</option>
+        <option value="15">15 seconds</option>
+        <option value="30">30 seconds</option>
+      </select>
+    </div>
+
+    <!-- DIFFICULTY -->
+    <div class="modal-section">
+      <label>Difficulty</label>
+      <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="modal-actions">
+      <button class="btn danger" onclick="closeModal()">Back</button>
+      <button class="btn" onclick="createQuiz()">Create</button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- SCRIPTS -->
+<script src="../assets/js/navbar.js"></script>
+<script src="../assets/js/particles.js"></script>
+
+<script>
+let selectedCategory = "";
+
+// OPEN MODAL
+function openModal(category) {
+  selectedCategory = category;
+  document.getElementById("quizModal").classList.remove("hidden");
+}
+
+// CLOSE MODAL
+function closeModal() {
+  document.getElementById("quizModal").classList.add("hidden");
+}
+
+// TIMER TOGGLE
+const toggle = document.getElementById("timerToggle");
+const select = document.getElementById("timerSelect");
+
+toggle.addEventListener("change", () => {
+  select.disabled = !toggle.checked;
+});
+
+// CREATE QUIZ
+function createQuiz() {
+  const timerEnabled = toggle.checked;
+  const time = select.value;
+  const difficulty = document.getElementById("difficulty").value;
+
+  window.location.href =
+    `quiz-player.html?category=${selectedCategory}&timer=${timerEnabled}&time=${time}&difficulty=${difficulty}`;
+}
+</script>
+
+</body>
+</html>

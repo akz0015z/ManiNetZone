@@ -1,0 +1,76 @@
+const questions = {
+  web: {
+    easy: [
+      { q: "What does HTML stand for?", a: ["Hyper Text Markup Language", "High Text Machine Language", "Hyper Tool Multi Language", "None"], correct: 0 },
+      { q: "Which tag creates a hyperlink?", a: ["<a>", "<link>", "<href>", "<url>"], correct: 0 },
+      { q: "Which CSS property controls text size?", a: ["font-size", "text-style", "text-size", "font-weight"], correct: 0 },
+      { q: "Which HTML tag is used for images?", a: ["<img>", "<image>", "<pic>", "<src>"], correct: 0 },
+      { q: "Which is NOT a CSS unit?", a: ["px", "em", "rem", "ptx"], correct: 3 },
+      { q: "What does CSS stand for?", a: ["Cascading Style Sheets", "Color Style Sheets", "Creative Style System", "None"], correct: 0 },
+      { q: "Which tag is used for paragraphs?", a: ["<p>", "<text>", "<para>", "<t>"], correct: 0 },
+      { q: "Which property changes background color?", a: ["background-color", "color", "bg", "background-style"], correct: 0 },
+      { q: "Which symbol selects a class?", a: [".", "#", "*", "&"], correct: 0 },
+      { q: "Which symbol selects an ID?", a: ["#", ".", "@", "!"], correct: 0 },
+      { q: "Which tag is for headings?", a: ["<h1>", "<head>", "<title>", "<header>"], correct: 0 },
+      { q: "Which tag creates unordered list?", a: ["<ul>", "<list>", "<li>", "<ol>"], correct: 0 },
+      { q: "Which property controls text color?", a: ["color", "text-color", "font-color", "style"], correct: 0 },
+      { q: "Which file type is CSS?", a: [".css", ".html", ".js", ".txt"], correct: 0 },
+      { q: "Which tag is used for line break?", a: ["<br>", "<break>", "<lb>", "<newline>"], correct: 0 },
+      { q: "Which tag is used for bold text?", a: ["<b>", "<bold>", "<stronger>", "<bb>"], correct: 0 },
+      { q: "Which attribute adds link URL?", a: ["href", "src", "link", "url"], correct: 0 },
+      { q: "Which tag is for tables?", a: ["<table>", "<tab>", "<grid>", "<tbl>"], correct: 0 },
+      { q: "Which tag is used for lists items?", a: ["<li>", "<item>", "<list>", "<ul>"], correct: 0 },
+      { q: "Which property controls width?", a: ["width", "size", "length", "w"], correct: 0 }
+    ],
+
+    medium: [
+      { q: "What is default display of <div>?", a: ["block", "inline", "flex", "grid"], correct: 0 },
+      { q: "What does z-index control?", a: ["Stacking order", "Zoom", "Opacity", "Font"], correct: 0 },
+      { q: "Flexbox main axis depends on?", a: ["flex-direction", "align-items", "gap", "order"], correct: 0 },
+      { q: "position:absolute references?", a: ["Nearest positioned parent", "Viewport", "Body", "HTML"], correct: 0 },
+      { q: "Which aligns horizontally in flex?", a: ["justify-content", "align-items", "gap", "center"], correct: 0 },
+      { q: "Which unit is root-relative?", a: ["rem", "em", "%", "px"], correct: 0 },
+      { q: "overflow:hidden does?", a: ["Hides overflow", "Deletes content", "Scrolls", "None"], correct: 0 },
+      { q: "Which event triggers click?", a: ["onclick", "onpress", "onhover", "onfocus"], correct: 0 },
+      { q: "Which tag links CSS externally?", a: ["<link>", "<style>", "<css>", "<script>"], correct: 0 },
+      { q: "display:flex does?", a: ["Enables flexbox", "Hides element", "Centers text", "Adds spacing"], correct: 0 },
+      { q: "padding controls?", a: ["Inside spacing", "Outside spacing", "Border", "Text"], correct: 0 },
+      { q: "margin controls?", a: ["Outside spacing", "Inside spacing", "Gap", "None"], correct: 0 },
+      { q: "DOM stands for?", a: ["Document Object Model", "Data Object Model", "Design Model", "None"], correct: 0 },
+      { q: "Select element by ID?", a: ["getElementById", "queryAll", "getClass", "select"], correct: 0 },
+      { q: "font-family does?", a: ["Changes font", "Size", "Weight", "Spacing"], correct: 0 },
+      { q: "Which sets flex container?", a: ["display:flex", "flex:1", "position:flex", "align:flex"], correct: 0 },
+      { q: "Which centers flex vertically?", a: ["align-items", "justify-content", "gap", "order"], correct: 0 },
+      { q: "Which controls transparency?", a: ["opacity", "visibility", "z-index", "display"], correct: 0 },
+      { q: "Which property controls border?", a: ["border", "outline", "frame", "edge"], correct: 0 },
+      { q: "Which value makes inline block?", a: ["inline-block", "block-inline", "inline-flex", "flex"], correct: 0 }
+    ],
+
+    hard: [
+      { q: "Equal specificity CSS rule?", a: ["Last wins", "First wins", "Random", "None"], correct: 0 },
+      { q: "Highest specificity?", a: ["#id", ".class", "element", "*"], correct: 0 },
+      { q: "Event delegation relies on?", a: ["Event bubbling", "Capture", "Clone", "Async"], correct: 0 },
+      { q: "preventDefault does?", a: ["Stops default action", "Stops JS", "Stops event", "None"], correct: 0 },
+      { q: "stopPropagation does?", a: ["Stops bubbling", "Stops JS", "Stops click", "None"], correct: 0 },
+      { q: "Which is async?", a: ["fetch", "console.log", "let", "var"], correct: 0 },
+      { q: "Closure means?", a: ["Function + scope", "Loop", "Variable", "None"], correct: 0 },
+      { q: "Non-semantic tag?", a: ["<div>", "<section>", "<article>", "<header>"], correct: 0 },
+      { q: "Debounce means?", a: ["Delay execution", "Repeat fast", "Cancel JS", "None"], correct: 0 },
+      { q: "Throttle means?", a: ["Limit rate", "Delay forever", "Stop JS", "None"], correct: 0 },
+      { q: "Shadow DOM is?", a: ["Encapsulated DOM", "Hidden HTML", "CSS trick", "None"], correct: 0 },
+      { q: "Lazy loading?", a: ["Load on demand", "Load instantly", "Preload all", "None"], correct: 0 },
+      { q: "defer script?", a: ["Runs after HTML", "Runs instantly", "Blocks HTML", "None"], correct: 0 },
+      { q: "async script?", a: ["Runs independently", "Waits DOM", "Blocks DOM", "None"], correct: 0 },
+      { q: "Minification does?", a: ["Reduce file size", "Increase size", "Break code", "None"], correct: 0 },
+      { q: "Which improves performance?", a: ["Caching", "More CSS", "Inline all", "None"], correct: 0 },
+      { q: "Critical rendering path?", a: ["Render process", "JS only", "CSS only", "None"], correct: 0 },
+      { q: "Reflow means?", a: ["Layout recalculation", "Color change", "Animation", "None"], correct: 0 },
+      { q: "Repaint means?", a: ["Visual redraw", "Layout change", "DOM change", "None"], correct: 0 },
+      { q: "Virtual DOM used in?", a: ["React", "HTML", "CSS", "None"], correct: 0 }
+    ]
+  },
+
+  js: { easy: [], medium: [], hard: [] },
+  algo: { easy: [], medium: [], hard: [] },
+  system: { easy: [], medium: [], hard: [] }
+};

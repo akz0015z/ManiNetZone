@@ -34,7 +34,6 @@ function applyAppearance(theme, background) {
     case "pink": bgClass = "bg-pink-sparkles"; break;
     case "black": bgClass = "bg-black-sparkles"; break;
     case "grey": bgClass = "bg-grey-sparkles"; break;
-    case "sky":
     default: bgClass = "bg-sky-sparkles";
   }
 
@@ -67,10 +66,7 @@ function setupNavbarUserData() {
       const doc = await db.collection("users").doc(user.uid).get();
       const data = doc.exists ? doc.data() : {};
 
-      const theme = data.theme || "dark";
-      const background = data.background || "sky";
-
-      applyAppearance(theme, background);
+      applyAppearance(data.theme || "dark", data.background || "sky");
     } catch (err) {
       console.error("Error loading navbar user data:", err);
     }
@@ -82,47 +78,35 @@ function loadNavbar() {
   if (!navbar) return;
 
   const page = document.body.getAttribute("data-page");
-  const showNav = true;
 
-  if (!showNav) {
-    navbar.innerHTML = "";
-    return;
-  }
+  // 🔥 AUTO PATH DETECTION
+  const isInPagesFolder = window.location.pathname.includes("/pages/");
+  const basePath = isInPagesFolder ? "" : "pages/";
+  const imgBase = isInPagesFolder ? ".." : ".";
 
-  const isSubPage = [
-    "settings",
-    "typing-test",
-    "memory-game",
-    "guess-game",
-    "chat",
-    "analytics",
-    "feedback",
-  ].includes(page);
-
-  const imgBase = isSubPage ? ".." : ".";
   const showSettingsIcon = page !== "settings";
 
   navbar.innerHTML = `
     <nav class="navbar">
       <div class="nav-left">
-        <img src="${imgBase}/assets/img/tmt.jpg" alt="ManiNet Zone" class="nav-logo" />
+        <img src="${imgBase}/assets/img/tmt.jpg" class="nav-logo" />
         <span class="nav-title">ManiNet Zone</span>
       </div>
 
       <div class="nav-center">
-        <a href="${isSubPage ? '../hub.html' : 'hub.html'}">Hub</a>
-        <a href="${isSubPage ? 'typing-test.html' : 'pages/typing-test.html'}">Typing Test</a>
-        <a href="${isSubPage ? 'memory-game.html' : 'pages/memory-game.html'}">Memory Game</a>
-        <a href="${isSubPage ? 'guess-game.html' : 'pages/guess-game.html'}">Quiz Game</a>
-        <a href="${isSubPage ? 'chat.html' : 'pages/chat.html'}">Chat</a>
-        <a href="${isSubPage ? 'analytics.html' : 'pages/analytics.html'}">Analytics</a>
-        <a href="${isSubPage ? 'feedback.html' : 'pages/feedback.html'}">Feedback</a>
+        <a href="${isInPagesFolder ? '../hub.html' : 'hub.html'}">Hub</a>
+        <a href="${basePath}typing-test.html">Typing Test</a>
+        <a href="${basePath}memory-game.html">Memory Game</a>
+        <a href="${basePath}quiz-selection.html">Quiz Game</a>
+        <a href="${basePath}chat.html">Chat</a>
+        <a href="${basePath}analytics.html">Analytics</a>
+        <a href="${basePath}feedback.html">Feedback</a>
       </div>
 
       <div class="nav-right">
         ${showSettingsIcon ? `
-          <button id="settingsBtn" class="icon-btn" title="Settings">
-            <img src="${imgBase}/assets/img/settings.png" class="icon-img" alt="Settings" />
+          <button id="settingsBtn" class="icon-btn">
+            <img src="${imgBase}/assets/img/settings.png" class="icon-img" />
           </button>
         ` : ""}
 
@@ -131,13 +115,12 @@ function loadNavbar() {
     </nav>
   `;
 
-  // disabled nav links on login/signup ===
+  // 🔒 LOGIN PAGE PROTECTION
   if (page === "login" || page === "signup") {
     const navLinks = navbar.querySelectorAll("a");
     const logoutBtn = document.getElementById("logoutBtn");
     const settingsBtn = document.getElementById("settingsBtn");
 
-    // hide logout + settings
     if (logoutBtn) logoutBtn.style.display = "none";
     if (settingsBtn) settingsBtn.style.display = "none";
 
@@ -148,15 +131,16 @@ function loadNavbar() {
       });
     });
   }
-  // 
 
+  // ⚙ SETTINGS BUTTON
   const settingsBtn = document.getElementById("settingsBtn");
   if (settingsBtn) {
     settingsBtn.addEventListener("click", () => {
-      window.location.href = isSubPage ? "settings.html" : "pages/settings.html";
+      window.location.href = `${basePath}settings.html`;
     });
   }
 
+  // 🚪 LOGOUT
   const logoutBtn = document.getElementById("logoutBtn");
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {

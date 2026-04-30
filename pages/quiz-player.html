@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz Player</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+
+<body data-page="quiz-player">
+
+<!-- BACKGROUND -->
+<canvas id="particles"></canvas>
+
+<!-- NAVBAR -->
+<div id="navbar"></div>
+
+<!-- MAIN -->
+<main class="quiz-player-container">
+
+  <!-- 🔥 QUIZ BOX (GLASS CARD) -->
+  <div class="quiz-box">
+
+    <!-- TOP BAR -->
+    <div class="quiz-top">
+      <span id="progress">Question 1</span>
+
+      <div class="timer-controls">
+        <button class="time-btn active" data-time="10">10s</button>
+        <button class="time-btn" data-time="15">15s</button>
+        <button class="time-btn" data-time="30">30s</button>
+      </div>
+
+      <span id="timer">10</span>
+    </div>
+
+    <!-- QUESTION -->
+    <h2 id="question">Loading...</h2>
+
+    <!-- OPTIONS -->
+    <div id="options" class="options-container"></div>
+
+  </div> <!-- ✅ THIS WAS MISSING -->
+
+</main>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
+
+<script src="../assets/js/firebase-config.js"></script>
+<script src="../assets/js/navbar.js"></script>
+<script src="../assets/js/auth.js"></script>
+<script src="../assets/js/particles.js"></script>
+
+<script src="../assets/js/questions.js"></script>
+<script src="../assets/js/quiz-player.js"></script>
+
+</body>
+</html>
