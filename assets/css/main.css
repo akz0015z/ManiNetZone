@@ -2227,3 +2227,17 @@ body[data-page="feedback"] .settings-card {
   border-radius: 10px;
 
 }
+
+@media (max-width: 1400px) {
+
+  .typing-container {
+
+    transform: scale(0.88);
+
+    transform-origin: top center;
+
+    width: 110%;
+
+  }
+
+}
