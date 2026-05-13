@@ -61,20 +61,25 @@ auth.onAuthStateChanged(async (user) => {
 
   try {
 
-    const quizSnap =
-      await db
-      .collection("quizResults")
-      .where(
-        "uid",
-        "==",
-        user.uid
-      )
-      .get();
+  const userRef =
+  db.collection("users")
+  .doc(user.uid);
 
-    document.getElementById(
-      "statQuizAttempts"
-    ).textContent =
-      quizSnap.size;
+  const userDoc =
+  await userRef.get();
+
+  if (userDoc.exists) {
+
+  const data =
+    userDoc.data();
+
+  document.getElementById(
+    "statQuizAttempts"
+  ).textContent =
+
+    data.totalQuizzes || 0;
+
+}
 
   } catch (err) {
 
