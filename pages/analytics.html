@@ -9,20 +9,156 @@
 
 <body data-page="analytics">
 
-  
+  <!-- BACKGROUND -->
   <canvas id="particles"></canvas>
+
+  <!-- NAVBAR -->
   <div id="navbar"></div>
 
+  <!-- MAIN CONTENT -->
   <main class="analytics-container">
 
-    <div class="analytics-card">
-      <h1>Analytics</h1>
-      <p class="muted">Under Development — Coming Soon!</p>
+    <h1 class="analytics-title">📊 Your Stats Dashboard</h1>
+    <p class="muted">Real-time performance tracking 🔥</p>
+
+    <h2 class="leaderboard-title">
+  🧠 Quiz Stats
+</h2> 
+
+    <!-- STATS GRID -->
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <h3>🎮 Total Quizzes</h3>
+        <p id="totalQuizzes">0</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>🎯 Accuracy</h3>
+        <p id="accuracyStat">0%</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>🏆 Best Score</h3>
+        <p id="bestScore">0/10</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>🔥 Streak</h3>
+        <p id="streakStat">0 days</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>⚡ XP</h3>
+        <p id="xpStat">0 XP</p>
+      </div>
+
     </div>
+
+    <!-- THE TYPING STATS -->
+
+<h2 class="leaderboard-title">
+  ⌨️ Typing Stats
+</h2>
+
+<div class="stats-grid">
+
+   <div class="stat-card">
+    <h3>⌨️ Tests Completed</h3>
+    <p id="testsCompleted">0</p>
+  </div>
+
+  <div class="stat-card">
+    <h3>⚡ Highest WPM</h3>
+    <p id="highestWPM">0</p>
+  </div>
+
+  <div class="stat-card">
+    <h3>📈 Average WPM</h3>
+    <p id="averageWPM">0</p>
+  </div>
+
+  <div class="stat-card">
+    <h3>🎯 Typing Accuracy</h3>
+    <p id="typingAccuracy">0%</p>
+  </div>
+
+  <div class="stat-card">
+  <h3>⚡ Typing XP</h3>
+  <p id="typingXP">0 XP</p>
+</div>
+
+</div>
+
+<!-- THE ARENA STATS -->
+
+<h2 class="stats-section-title">
+  🎯 Arena Stats
+</h2>
+
+<div class="stats-grid">
+
+  <div class="stat-card">
+    <h3>🎮 Games Played</h3>
+    <p id="arenaGamesPlayed">0</p>
+  </div>
+
+  <div class="stat-card">
+    <h3>🏆 High Score</h3>
+    <p id="arenaHighScore">0</p>
+  </div>
+
+  <div class="stat-card">
+    <h3>🔥 Best Combo</h3>
+    <p id="arenaBestCombo">0</p>
+  </div>
+
+  <div class="stat-card">
+    <h3>⚡ Arena XP</h3>
+    <p id="arenaXP">0 XP</p>
+  </div>
+  
+</div>
+
+    <!-- XP BAR -->
+    <div class="xp-section">
+
+      <h3>Level Progress</h3>
+
+      <div class="xp-bar">
+        <div class="xp-fill" id="xpFill" style="width: 0%;"></div>
+      </div>
+
+      <p id="levelText">Level 1 → Level 2</p>
+
+    </div>
+
+    <!-- LEADERBOARD -->
+    <div class="leaderboard-box">
+
+      <h2>🏆 Top Players</h2>
+
+      <div class="leader">
+        <span>🥇 Loading...</span>
+        <span>...</span>
+      </div>
+
+      <div class="leader">
+        <span>🥈 Loading...</span>
+        <span>...</span>
+      </div>
+
+      <div class="leader">
+        <span>🥉Loading...</span>
+        <span>...</span>
+      </div>
+
+    </div>
+    
 
   </main>
 
-  <!-- Firebase + Scripts -->
+  <!-- FIREBASE + SCRIPTS -->
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
@@ -31,6 +167,13 @@
   <script src="../assets/js/navbar.js"></script>
   <script src="../assets/js/auth.js"></script>
   <script src="../assets/js/particles.js"></script>
+
+  <!-- LIVE ANALYTICS -->
+  <script src="../assets/js/analytics.js"></script>
+
+  <div id="footer"></div>
+
+  <script src="../assets/js/footer.js"></script>
 
 </body>
 </html>
