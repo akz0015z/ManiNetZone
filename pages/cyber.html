@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Software Quiz Hub</title>
+  <title>Cyber Quiz Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- MAIN CSS -->
   <link rel="stylesheet" href="../assets/css/main.css" />
 </head>
 
-<body data-page="software-quiz">
+<body data-page="cyber-quiz">
 
 <!-- BACKGROUND -->
 <canvas id="particles"></canvas>
@@ -20,55 +20,60 @@
 <!-- MAIN CONTENT -->
 <main class="quiz-hub-container">
 
-  <h1 class="quiz-hub-title">Software Quiz Hub</h1>
-  <p class="quiz-hub-sub">Choose a category to test your knowledge</p>
+  <h1 class="quiz-hub-title">Cyber Quiz Hub</h1>
+  <p class="quiz-hub-sub">Test your cybersecurity knowledge</p>
 
   <div class="quiz-grid">
 
+    <!-- MAIN CYBER QUIZ -->
     <div class="quiz-card">
-      <h2>🌐 Fun Web Development Quiz!</h2>
+      <h2>🔐 Fun Cyber Security Quiz</h2>
 
-      <img src="../assets/img/webmani.png" class="quiz-preview-img" alt="Quiz Preview">
+      <img src="../assets/img/cybermani.png" class="quiz-preview-img" alt="Cyber Preview">
 
-      <p>Stuff on HTML, CSS, UI & frontend concepts!!</p>
-      
-      <button class="feature-btn" onclick="openModal('web')">Press Here To Start Quiz!</button>
+      <p>Test your knowledge on hacking, security & protection!</p>
+
+      <button class="feature-btn" onclick="openModal('cyber')">
+        Press Here To Start Quiz!
+      </button>
+    </div>
+
+    <!-- OPTIONAL FUTURE CATEGORY -->
+    <div class="quiz-card">
+      <h2>🛡️ Ethical Hacking</h2>
+
+      <img src="../assets/img/ethicalmani.png" class="quiz-preview-img" alt="Hacking Preview">
+
+      <p>Learn about penetration testing & vulnerabilities!</p>
+
+      <button class="feature-btn" onclick="openModal('hacking')">
+        Press Here To Start Quiz!
+      </button>
     </div>
 
     <div class="quiz-card">
-  <h2>⚡Fun JavaScript Quiz!</h2>
+  <h2>🦠Fun Malware Analysis</h2>
 
-  <img src="../assets/img/javamani.png" class="quiz-preview-img" alt="JS Quiz">
+  <img src="../assets/img/malwaremani.png" class="quiz-preview-img" alt="Malware Quiz">
 
-  <p>Test your knowledge on JS logic, async, closures & more!!</p>
+  <p>Quiz about viruses, trojans & how malware works!</p>
 
-  <button class="feature-btn" onclick="openModal('js')">
+  <button class="feature-btn" onclick="openModal('malware')">
     Press Here To Start Quiz!
   </button>
 </div>
 
-    <div class="quiz-card">
-  <h2>🧠 Algorithms</h2>
+   <div class="quiz-card">
+  <h2>🌐 Network Security</h2>
 
-  <img src="../assets/img/algomani.png" class="quiz-preview-img" alt="Algorithms Preview">
+  <img src="../assets/img/networkmani.png" class="quiz-preview-img" alt="Network Quiz">
 
-  <p>Test your logic, problem solving & algorithm skills!</p>
+  <p>Fast Questions On Firewalls, attacks, packets & protecting networks!</p>
 
-  <button class="feature-btn" onclick="openModal('algo')">
+  <button class="feature-btn" onclick="openModal('network')">
     Press Here To Start Quiz!
+  </button>
 </div>
-
-    <div class="quiz-card">
-  <h2>💻 System Design</h2>
-
-  <img src="../assets/img/systemmani.png" class="quiz-preview-img" alt="System Design Preview">
-
-  <p>Learn how large systems work, scale & handle users!</p>
-
-  <button class="feature-btn" onclick="openModal('system')">
-    Press Here To Start Quiz!
-</div>
-
   </div>
 
 </main>
