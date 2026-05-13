@@ -1,55 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>ManiHub Typing Speed Test</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  
-  <link rel="stylesheet" href="../assets/css/main.css" />
+<head>
+
+  <meta charset="UTF-8" />
+
+  <title>
+    ManiHub Typing Speed Test
+  </title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <!-- CSS -->
+  <link
+    rel="stylesheet"
+    href="../assets/css/main.css"
+  />
+
 </head>
 
 <body data-page="typing-test">
-  
-  
+
+  <!-- NAVBAR -->
   <div id="navbar"></div>
 
   <main class="typing-container">
 
-    <h1 class="typing-title">Typing Speed Test</h1>
+    <!-- TITLE -->
+
+    <h1 class="typing-title">
+      ⌨️ Typing Speed Test
+    </h1>
+
+    <!-- TIME BUTTONS -->
 
     <div class="time-selector">
-      <button class="time-btn" data-time="15">15s</button>
-      <button class="time-btn" data-time="30">30s</button>
-      <button class="time-btn active" data-time="60">60s</button>
+
+      <button
+        class="time-btn"
+        data-time="15"
+      >
+        15s
+      </button>
+
+      <button
+        class="time-btn"
+        data-time="30"
+      >
+        30s
+      </button>
+
+      <button
+        class="time-btn active"
+        data-time="60"
+      >
+        60s
+      </button>
+
     </div>
+
+    <!-- TARGET GOALS -->
+
+    <div class="target-box">
+
+      <h3>
+        🎯 Recommended Goal
+      </h3>
+
+      <p id="targetGoal">
+        🔥 Strong Typists: 55+ WPM
+      </p>
+
+    </div>
+
+    <!-- LIVE STATS -->
+
+    <div class="typing-stats-bar">
+
+      <div class="typing-stat-card">
+
+        <span>
+          ⏱️ Time
+        </span>
+
+        <h3 id="timeLeft">
+          60
+        </h3>
+
+      </div>
+
+      <div class="typing-stat-card">
+
+        <span>
+          ⚡ WPM
+        </span>
+
+        <h3 id="wpm">
+          0
+        </h3>
+
+      </div>
+
+      <div class="typing-stat-card">
+
+        <span>
+          🎯 Accuracy
+        </span>
+
+        <h3 id="accuracy">
+          100%
+        </h3>
+
+      </div>
+
+      <div class="typing-stat-card">
+
+        <span>
+          🏆 Rank
+        </span>
+
+        <h3 id="typingRank">
+          --
+        </h3>
+
+      </div>
+
+    </div>
+
+    <!-- WORD BOX -->
 
     <div class="typing-box">
+
       <div id="words"></div>
+
     </div>
 
-    <input id="typingInput" type="text" placeholder="Start typing..." autocomplete="off" />
+    <!-- INPUT -->
 
-    <div class="results">
-      <p>⏱ Time Remaining Left: <span id="timeLeft">60</span>s</p>
-      <p>⚡ WPM: <span id="wpm">0</span></p>
-      <p>🎯 Accuracy: <span id="accuracy">100%</span></p>
-    </div>
+    <input
+      id="typingInput"
+      type="text"
+      placeholder="Start typing..."
+      autocomplete="off"
+    />
 
   </main>
 
   <!-- FIREBASE -->
+
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
 
-  <!-- JS PATHS -->
+  <!-- JS -->
+
   <script src="../assets/js/firebase-config.js"></script>
+
   <script src="../assets/js/navbar.js"></script>
+
   <script src="../assets/js/auth.js"></script>
 
-  
   <script src="../assets/js/typing-test.js"></script>
 
+  <div id="footer"></div>
+
+  <script src="../assets/js/footer.js"></script>
+
 </body>
+
 </html>
