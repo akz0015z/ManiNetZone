@@ -1,88 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8" />
+
   <title>ManiNet Zone – Hub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <link
+    rel="stylesheet"
+    href="assets/css/main.css"
+  />
+
 </head>
 
 <body data-page="hub">
 
-  <!-- sparkles background -->
+  <!-- Sparkles Background -->
+
   <canvas id="particles"></canvas>
 
   <!-- Navbar -->
+
   <div id="navbar"></div>
 
   <main class="hub-wrapper">
 
-    <!-- LEFT Weather Card -->
-    <section class="hub-side-card left-card">
-      <h2>Current Weather</h2>
-      <p>Your location</p>
-      <div id="weatherContent">Loading weather...</div>
-    </section>
+    <!-- LEFT QUICK STATS -->
 
-    <!-- RIGHT Quick Stats Card -->
-    <section class="hub-side-card right-card">
+    <section class="hub-side-card left-card hub-stats-card">
+
       <h2>Quick Stats</h2>
-      <ul>
-        <li><span id="statQuizAttempts">0</span> quizzes completed</li>
-        <li><span id="statTypingSessions">0</span> typing tests taken</li>
-        <li><span id="statMessagesSent">0</span> chat messages</li>
-      </ul>
-    </section>
 
-    <!-- Center content -->
-    <section class="hub-center">
-      <h1>Welcome back, <span id="hubDisplayName">User</span> 👋</h1>
-      <p class="hub-subtext">Choose a tool below to start using ManiNet Zone.</p>
+      <div class="hub-stats-grid">
 
-      <div class="feature-box-grid">
+        <!-- QUIZZES -->
 
-        <div class="feature-box">
-          <img src="assets/img/typing.png" alt="Typing Test" class="feature-img">
-          <button class="feature-btn" onclick="location.href='pages/typing-test.html'">Typing Speed Test</button>
+        <div class="hub-mini-stat-box">
+
+          <div class="hub-stat-icon">
+
+            🏆
+
+          </div>
+
+          <div
+            class="hub-stat-number"
+            id="statQuizAttempts"
+          >
+
+            0
+
+          </div>
+
+          <div class="hub-stat-label">
+
+            Quizzes Completed
+
+          </div>
+
         </div>
 
-        <div class="feature-box">
-          <img src="assets/img/memory.png" alt="Memory Game" class="feature-img">
-          <button class="feature-btn" onclick="location.href='pages/memory-game.html'">Memory Card Game</button>
+        <!-- TYPING -->
+
+        <div class="hub-mini-stat-box">
+
+          <div class="hub-stat-icon">
+
+            ⌨️
+
+          </div>
+
+          <div
+            class="hub-stat-number"
+            id="statTypingSessions"
+          >
+
+            0
+
+          </div>
+
+          <div class="hub-stat-label">
+
+            Typing Tests
+
+          </div>
+
         </div>
 
-        <div class="feature-box">
-          <img src="assets/img/quiz.png" alt="Quiz Game" class="feature-img">
-          <button class="feature-btn" onclick="location.href='pages/quiz-selection.html'">Quiz Guess Game</button>
-        </div>
+        <!-- ARENA -->
 
-        <div class="feature-box">
-          <img src="assets/img/chat.png" alt="Chatroom" class="feature-img">
-          <button class="feature-btn" onclick="location.href='pages/chat.html'">Chatroom</button>
+        <div class="hub-mini-stat-box">
+
+          <div class="hub-stat-icon">
+
+            ⚔️
+
+          </div>
+
+          <div
+            class="hub-stat-number"
+            id="statArenaAttempts"
+          >
+
+            0
+
+          </div>
+
+          <div class="hub-stat-label">
+
+            Arena Attempts
+
+          </div>
+
         </div>
 
       </div>
+
+    </section>
+
+    <!-- RIGHT WEATHER -->
+
+    <section class="hub-side-card right-card">
+
+      <h2>Current Weather</h2>
+
+      <p>Your location</p>
+
+      <div id="weatherContent">
+
+        Loading weather...
+
+      </div>
+
+    </section>
+
+    <!-- CENTER CONTENT -->
+
+    <section class="hub-center">
+
+      <h1>
+
+        Welcome back,
+
+        <span id="hubDisplayName">
+
+          User
+
+        </span>
+
+        👋
+
+      </h1>
+
+      <p class="hub-subtext">
+
+        Choose a tool below to start using ManiNet Zone.
+
+      </p>
+
+      <div class="feature-box-grid">
+
+        <!-- TYPING TEST -->
+
+        <div class="feature-box">
+
+          <img
+            src="assets/img/typing.png"
+            alt="Typing Test"
+            class="feature-img"
+          >
+
+          <button
+            class="feature-btn"
+            onclick="location.href='pages/typing-test.html'"
+          >
+
+            Typing Speed Test
+
+          </button>
+
+        </div>
+
+        <!-- ARENA -->
+
+        <div class="feature-box">
+
+          <img
+            src="assets/img/memory.png"
+            alt="Arena"
+            class="feature-img"
+          >
+
+          <button
+            class="feature-btn"
+            onclick="location.href='pages/arena.html'"
+          >
+
+            Arena
+
+          </button>
+
+        </div>
+
+        <!-- QUIZ -->
+
+        <div class="feature-box">
+
+          <img
+            src="assets/img/quiz.png"
+            alt="Quiz Game"
+            class="feature-img"
+          >
+
+          <button
+            class="feature-btn"
+            onclick="location.href='pages/quiz-selection.html'"
+          >
+
+            Quiz Guess Game
+
+          </button>
+
+        </div>
+
+        <!-- CHAT -->
+
+        <div class="feature-box">
+
+          <img
+            src="assets/img/chat.png"
+            alt="Chatroom"
+            class="feature-img"
+          >
+
+          <button
+            class="feature-btn"
+            onclick="location.href='pages/chat.html'"
+          >
+
+            Chatroom
+
+          </button>
+
+        </div>
+
+      </div>
+
     </section>
 
   </main>
 
-  <!-- Firebase -->
+  <!-- FIREBASE -->
+
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-storage-compat.js"></script>
 
+  <!-- MAIN SCRIPTS -->
+
   <script src="assets/js/firebase-config.js"></script>
+
   <script src="assets/js/navbar.js"></script>
+
   <script src="assets/js/auth.js"></script>
+
   <script src="assets/js/hub.js"></script>
 
-  <!-- WEATHER (correct order: config first, weather second) -->
+  <!-- WEATHER -->
+
   <script src="assets/js/weather-config.js"></script>
+
   <script src="assets/js/weather.js"></script>
 
-  <!-- Sparkles -->
+  <!-- PARTICLES -->
+
   <script src="assets/js/particles.js"></script>
+
+  <div id="footer"></div>
+
+  <script src="assets/js/footer.js"></script>
 
 </body>
 </html>
