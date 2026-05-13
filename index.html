@@ -1,54 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8" />
-  <title>ManiNet Zone – Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+
+  <title>
+
+    ManiNet Zone – Login
+
+  </title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <link
+    rel="stylesheet"
+    href="assets/css/main.css"
+  />
+
 </head>
 
 <body data-page="login">
 
+  <!-- Sparkles Background -->
+
   <canvas id="particles"></canvas>
 
- 
+  <!-- Navbar -->
+
   <div id="navbar"></div>
 
+  <!-- Login Container -->
+
   <main class="page-container">
+
     <section class="auth-card">
-      <h1 class="app-title">ManiNet Zone</h1>
-      <h2>Login</h2>
+
+      <!-- TITLE -->
+
+      <h1 class="app-title">
+
+        ManiNet Zone
+
+      </h1>
+
+      <!-- LOGIN HEADING -->
+
+      <h2>
+
+        Login
+
+      </h2>
+
+      <!-- LOGIN FORM -->
 
       <form id="loginForm">
+
+        <!-- EMAIL -->
+
         <label>
+
           Email
-          <input type="email" id="loginEmail" required />
+
+          <input
+            type="email"
+            id="loginEmail"
+            required
+          />
+
         </label>
+
+        <!-- PASSWORD -->
 
         <label>
+
           Password
-          <input type="password" id="loginPassword" required />
+
+          <input
+            type="password"
+            id="loginPassword"
+            required
+          />
+
         </label>
 
-        <button type="submit" class="btn primary">Login</button>
+        <!-- LOGIN BUTTON -->
+
+        <button
+          type="submit"
+          class="btn primary"
+        >
+
+          Login
+
+        </button>
+
       </form>
 
-      <p class="muted">
+      <!-- SIGNUP -->
+
+      <p class="muted auth-bottom-text">
+
         Don’t have an account?
-        <a href="signup.html">Create one</a>
+
+        <a href="signup.html">
+
+          Create one
+
+        </a>
+
       </p>
+
+      <!-- FORGOT PASSWORD -->
+
+      <div class="forgot-password-text">
+
+        <button
+          id="forgotPasswordBtn"
+          class="forgot-password-btn"
+        >
+
+          Forgot Password?
+
+        </button>
+
+      </div>
+
     </section>
+
   </main>
 
-  <!-- Firebase + Scripts -->
+  <!-- RESET PASSWORD MODAL -->
+
+  <div
+    id="resetPasswordModal"
+    class="reset-password-modal"
+  >
+
+    <div class="reset-password-box">
+
+      <h3>
+
+        Reset Password
+
+      </h3>
+
+      <p>
+
+        Enter your email address below to receive a password reset link.
+
+      </p>
+
+      <input
+        type="email"
+        id="resetPasswordEmail"
+        placeholder="Enter your email"
+      />
+
+      <div class="reset-password-actions">
+
+        <!-- SEND -->
+
+        <button
+          id="sendResetBtn"
+          class="btn primary"
+        >
+
+          Send Reset Link
+
+        </button>
+
+        <!-- CANCEL -->
+
+        <button
+          id="closeResetModal"
+          class="btn secondary"
+        >
+
+          Cancel
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Firebase -->
+
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
 
+  <!-- Main Scripts -->
+
   <script src="assets/js/firebase-config.js"></script>
+
   <script src="assets/js/navbar.js"></script>
+
   <script src="assets/js/auth.js"></script>
+
   <script src="assets/js/particles.js"></script>
+
+  <div id="footer"></div>
+
+  <script src="assets/js/footer.js"></script>
 
 </body>
 </html>
