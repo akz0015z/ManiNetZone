@@ -1,165 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
-  <title>ManiNet Zone – Security & Settings</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../assets/css/main.css" />
+
+  <title>
+    ManiNet Zone – Security & Settings
+  </title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <link
+    rel="stylesheet"
+    href="../assets/css/main.css"
+  />
+
 </head>
 
+<body
+  data-page="settings"
+  class="hub-wrapper"
+>
 
-<body data-page="settings" class="hub-wrapper">
-<canvas id="particles"></canvas>
+  <canvas id="particles"></canvas>
 
-
-
-  
+  <!-- NAVBAR -->
   <div id="navbar"></div>
 
   <main class="page-container settings-container">
-    <h1>Security & Settings</h1>
-    <p class="muted">
-      Manage your account, security, and personalisation options.
+
+    <h1 class="typing-title settings-main-title">
+      Security & Settings
+    </h1>
+
+    <p class="muted settings-main-subtext">
+      Manage your account, security and personalisation options.
     </p>
 
     <div class="settings-grid">
 
-      <!-- profile selection -->
-      <section class="card settings-card">
-        <h2 class="card-title">Profile</h2>
+      <!-- PROFILE -->
 
-        <p><strong>Display name:</strong> <span id="currentDisplayName">Loading…</span></p>
-        <p><strong>Username:</strong> <span id="currentUsername">Loading…</span></p>
-        <p><strong>Email:</strong> <span id="currentEmail">Loading…</span></p>
+      <section class="card settings-card">
+
+        <h2 class="card-title">
+          Profile
+        </h2>
+
+        <p>
+          <strong>Display name:</strong>
+
+          <span id="currentDisplayName">
+            Loading…
+          </span>
+        </p>
+
+        <p>
+          <strong>Username:</strong>
+
+          <span id="currentUsername">
+            Loading…
+          </span>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+
+          <span id="currentEmail">
+            Loading…
+          </span>
+        </p>
+
       </section>
 
-      <!-- theme selection -->
+      <!-- APPEARANCE -->
+
       <section class="card settings-card">
-        <h2 class="card-title">Appearance</h2>
+
+        <h2 class="card-title">
+          Appearance
+        </h2>
 
         <div class="settings-form">
+
           <label>
+
             Theme
+
             <select id="themeSelect">
-              <option value="dark">Dark</option>
-              <option value="light">Light</option>
+
+              <option value="dark">
+                Dark
+              </option>
+
+              <option value="light">
+                Light
+              </option>
+
             </select>
+
           </label>
 
           <label>
+
             Background style
+
             <select id="backgroundSelect">
-              <option value="sky">Sky Blue + Sparkles</option>
-              <option value="pink">Pink + Sparkles</option>
-              <option value="black">Black + White Sparkles</option>
-              <option value="grey">Grey + Sparkles</option>
+
+              <option value="sky">
+                Sky Blue + Sparkles
+              </option>
+
+              <option value="pink">
+                Pink + Sparkles
+              </option>
+
+              <option value="black">
+                Black + White Sparkles
+              </option>
+
+              <option value="grey">
+                Grey + Sparkles
+              </option>
+
             </select>
+
           </label>
 
-          <button id="saveAppearanceBtn" class="btn small">
+          <button
+            id="saveAppearanceBtn"
+            class="btn small"
+          >
             Save Appearance
           </button>
+
         </div>
+
       </section>
 
-      <!-- id section -->
-      <section class="card settings-card">
-        <h2 class="card-title">Identity</h2>
+      <!-- IDENTITY -->
 
-        <form id="displayNameForm" class="settings-form">
+      <section class="card settings-card">
+
+        <h2 class="card-title">
+          Identity
+        </h2>
+
+        <!-- DISPLAY NAME -->
+
+        <form
+          id="displayNameForm"
+          class="settings-form"
+        >
+
           <label>
+
             New display name
-            <input type="text" id="newDisplayName" maxlength="30" />
+
+            <input
+              type="text"
+              id="newDisplayName"
+              maxlength="30"
+            />
+
           </label>
-          <button type="submit" class="btn small">
+
+          <button
+            type="submit"
+            class="btn small"
+          >
             Update Display Name
           </button>
-          <p class="muted tiny">You can change this every 7 days.</p>
+
+          <p class="muted tiny">
+            You can change this every 7 days.
+          </p>
+
         </form>
 
-        <form id="usernameForm" class="settings-form">
+        <!-- USERNAME -->
+
+        <form
+          id="usernameForm"
+          class="settings-form"
+        >
+
           <label>
+
             New username
-            <input type="text" id="newUsername" maxlength="20" />
+
+            <input
+              type="text"
+              id="newUsername"
+              maxlength="20"
+            />
+
           </label>
-          <button type="submit" class="btn small">
+
+          <button
+            type="submit"
+            class="btn small"
+          >
             Update Username
           </button>
-          <p class="muted tiny">You can change this every 30 days.</p>
+
+          <p class="muted tiny">
+            You can change this every 30 days.
+          </p>
+
         </form>
+
       </section>
 
-      <!-- security section -->
-<section class="card settings-card">
-  <h2 class="card-title">Security</h2>
+      <!-- SECURITY -->
 
-  
-  <form id="passwordForm" class="settings-form">
-    <label>
-      Current password
-      <input type="password" id="currentPassword" />
-    </label>
+      <section class="card settings-card">
 
-    <label>
-      New password
-      <input type="password" id="newPassword" />
-    </label>
+        <h2 class="card-title">
+          Security
+        </h2>
 
-    
-    <label>
-      Confirm password
-      <input type="password" id="confirmPassword" />
-    </label>
+        <!-- PASSWORD -->
 
-    
-    <button type="submit" class="btn small">
-      Change Password
-    </button>
-  </form>
+        <form
+          id="passwordForm"
+          class="settings-form"
+        >
 
-  <form id="emailForm" class="settings-form">
-  <label>
-    New email address
-    <input type="email" id="newEmail" />
-  </label>
+          <label>
 
-  <label>
-    Confirm password
-    <input type="password" id="confirmEmailPassword" />
-  </label>
+            Current password
 
-  <button type="submit" class="btn small">
-    Change Email
-  </button>
-</form>
+            <input
+              type="password"
+              id="currentPassword"
+              required
+            />
 
+          </label>
 
-  <hr class="settings-divider" />
+          <label>
 
-  <div class="settings-form">
-    <label class="toggle-row">
-      <input type="checkbox" id="twoFactorToggle" />
-      <span>Enable Two-Factor Authentication (2FA)</span>
-    </label>
+            New password
 
-    <button id="manageSessionsBtn" class="btn small">
-      Log out of all devices
-    </button>
-  </div>
-</section>
+            <input
+              type="password"
+              id="newPassword"
+              required
+            />
 
+          </label>
 
-  <!-- Firebase + scripts -->
+          <label>
+
+            Confirm password
+
+            <input
+              type="password"
+              id="confirmPassword"
+              required
+            />
+
+          </label>
+
+          <button
+            type="submit"
+            class="btn small"
+          >
+            Change Password
+          </button>
+
+        </form>
+
+        <!-- EMAIL -->
+
+        <form
+          id="emailForm"
+          class="settings-form"
+        >
+
+          <label>
+
+            New email address
+
+            <input
+              type="email"
+              id="newEmail"
+              required
+            />
+
+          </label>
+
+          <label>
+
+            Confirm password
+
+            <input
+              type="password"
+              id="emailPassword"
+              required
+            />
+
+          </label>
+
+          <button
+            type="submit"
+            class="btn small"
+          >
+            Change Email
+          </button>
+
+        </form>
+
+        <hr class="settings-divider" />
+
+        <button
+          id="manageSessionsBtn"
+          class="btn small"
+        >
+          Log out of all devices
+        </button>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- FIREBASE -->
+
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
 
+  <!-- JS -->
+
   <script src="../assets/js/firebase-config.js"></script>
+
   <script src="../assets/js/navbar.js"></script>
+
   <script src="../assets/js/auth.js"></script>
+
   <script src="../assets/js/settings.js"></script>
+
   <script src="../assets/js/particles.js"></script>
 
+  <div id="footer"></div>
+
+  <script src="../assets/js/footer.js"></script>
 
 </body>
 </html>

@@ -1,168 +1,837 @@
 console.log("Settings JS loaded");
 
-// use shared Firebase instances (from firebase-config.js)
+// FIREBASE
+
 const settingsAuth = firebase.auth();
 const settingsDb = firebase.firestore();
 
 
+// USER DOC REF
+
 function getUserDocRef(user) {
-  return settingsDb.collection("users").doc(user.uid);
+
+  return settingsDb
+    .collection("users")
+    .doc(user.uid);
+
+}
+
+// POPUP
+
+function showSavePopup(message) {
+
+  const oldPopup =
+    document.querySelector(".save-popup");
+
+  if (oldPopup) {
+
+    oldPopup.remove();
+
+  }
+
+  const popup =
+    document.createElement("div");
+
+  popup.className =
+    "save-popup";
+
+  popup.innerHTML = `
+
+    <div class="save-popup-box">
+
+      <p>${message}</p>
+
+    </div>
+
+  `;
+
+  document.body.appendChild(
+    popup
+  );
+
+  setTimeout(() => {
+
+    popup.classList.add("show");
+
+  }, 10);
+
+  setTimeout(() => {
+
+    popup.classList.remove("show");
+
+    setTimeout(() => {
+
+      popup.remove();
+
+    }, 300);
+
+  }, 2500);
+
 }
 
 
-window.loadUserProfile = async function (user) {
+// LOAD PROFILE
+
+
+window.loadUserProfile =
+  async function (user) {
+
   if (!user) return;
 
-  const displayNameEl = document.getElementById("currentDisplayName");
-  const usernameEl = document.getElementById("currentUsername");
-  const emailEl = document.getElementById("currentEmail");
-  const themeSelect = document.getElementById("themeSelect");
-  const backgroundSelect = document.getElementById("backgroundSelect");
-
   try {
-    const snap = await getUserDocRef(user).get();
-    const data = snap.exists ? snap.data() : {};
 
-    const displayName = data.displayName || user.displayName || "(not set)";
-    const username = data.username || "(not set)";
-    const email = user.email || data.email || "(not set)";
+    const displayNameEl =
+      document.getElementById(
+        "currentDisplayName"
+      );
 
-    if (displayNameEl) displayNameEl.textContent = displayName;
-    if (usernameEl) usernameEl.textContent = username;
-    if (emailEl) emailEl.textContent = email;
+    const usernameEl =
+      document.getElementById(
+        "currentUsername"
+      );
 
-    // load saved theme/background 
-    if (themeSelect) themeSelect.value = data.theme || "dark";
-    if (backgroundSelect) backgroundSelect.value = data.background || "sky";
+    const emailEl =
+      document.getElementById(
+        "currentEmail"
+      );
+
+    const themeSelect =
+      document.getElementById(
+        "themeSelect"
+      );
+
+    const backgroundSelect =
+      document.getElementById(
+        "backgroundSelect"
+      );
+
+    const snap =
+      await getUserDocRef(user)
+      .get();
+
+    const data =
+      snap.exists
+        ? snap.data()
+        : {};
+
+    if (displayNameEl) {
+
+      displayNameEl.textContent =
+        data.displayName
+        || user.displayName
+        || "(not set)";
+
+    }
+
+    if (usernameEl) {
+
+      usernameEl.textContent =
+        data.username
+        || "(not set)";
+
+    }
+
+    if (emailEl) {
+
+      emailEl.textContent =
+        user.email
+        || "(not set)";
+
+    }
+
+    if (themeSelect) {
+
+      themeSelect.value =
+        data.theme || "dark";
+
+    }
+
+    if (backgroundSelect) {
+
+      backgroundSelect.value =
+        data.background || "sky";
+
+    }
+
   } catch (err) {
-    console.error("Error loading user profile in settings:", err);
+
+    console.error(
+      "Load profile error:",
+      err
+    );
+
   }
+
 };
 
 
+// SAVE APPEARANCE
+
+
 async function handleSaveAppearance(event) {
+
   event.preventDefault();
 
-  const themeEl = document.getElementById("themeSelect");
-  const bgEl = document.getElementById("backgroundSelect");
+  const theme =
+    document.getElementById(
+      "themeSelect"
+    )?.value || "dark";
 
-  const theme = themeEl ? themeEl.value : "dark";
-  const background = bgEl ? bgEl.value : "sky";
+  const background =
+    document.getElementById(
+      "backgroundSelect"
+    )?.value || "sky";
 
-  const user = settingsAuth.currentUser;
+  const user =
+    settingsAuth.currentUser;
+
   if (!user) {
-    alert("You must be logged in.");
+
+    showSavePopup(
+      "You must be logged in."
+    );
+
     return;
+
   }
 
   try {
-    await getUserDocRef(user).set(
-      { theme, background },
-      { merge: true }
+
+    await getUserDocRef(user)
+    .set({
+
+      theme,
+      background
+
+    }, {
+
+      merge: true
+
+    });
+
+    showSavePopup(
+      "Appearance updated successfully!"
     );
 
-    alert(
-      "Appearance saved! It will apply on Typing Test, Memory Game, Quiz Game and Chat pages."
-    );
   } catch (err) {
-    console.error("Error saving appearance:", err);
-    alert("Failed to save appearance.");
+
+    console.error(err);
+
+    showSavePopup(
+      "Failed to save appearance."
+    );
+
   }
+
 }
 
-/**
- * update display name
- */
+
+// DISPLAY NAME
+
 async function handleDisplayNameSubmit(event) {
+
   event.preventDefault();
 
-  const input = document.getElementById("newDisplayName");
-  const newName = input?.value.trim();
+  const input =
+    document.getElementById(
+      "newDisplayName"
+    );
+
+  const newName =
+    input.value.trim();
+
   if (!newName) {
-    alert("Enter a display name.");
+
+    showSavePopup(
+      "Enter a display name."
+    );
+
     return;
+
   }
 
-  const user = settingsAuth.currentUser;
+  const user =
+    settingsAuth.currentUser;
+
   if (!user) {
-    alert("Not logged in.");
+
+    showSavePopup(
+      "Not logged in."
+    );
+
     return;
+
   }
 
   try {
-    await getUserDocRef(user).set(
-      { displayName: newName },
-      { merge: true }
-    );
 
-    // Also update Firebase Auth profile
-    await user.updateProfile({ displayName: newName });
+    const snap =
+      await getUserDocRef(user)
+      .get();
 
-    const displayNameEl = document.getElementById("currentDisplayName");
-    if (displayNameEl) displayNameEl.textContent = newName;
+    const data =
+      snap.data() || {};
+
+    const lastChange =
+      data.lastDisplayNameChange || 0;
+
+    const sevenDays =
+      7 * 24 * 60 * 60 * 1000;
+
+    if (
+      Date.now() - lastChange
+      < sevenDays
+    ) {
+
+      const daysLeft =
+        Math.ceil(
+
+          (
+            sevenDays -
+            (
+              Date.now()
+              - lastChange
+            )
+          )
+
+          / (1000 * 60 * 60 * 24)
+
+        );
+
+      showSavePopup(
+        `You can change display name again in ${daysLeft} day(s).`
+      );
+
+      return;
+
+    }
+
+    await getUserDocRef(user)
+    .set({
+
+      displayName:
+        newName,
+
+      lastDisplayNameChange:
+        Date.now()
+
+    }, {
+
+      merge: true
+
+    });
+
+    await user.updateProfile({
+
+      displayName:
+        newName
+
+    });
+
+    document.getElementById(
+      "currentDisplayName"
+    ).textContent = newName;
 
     input.value = "";
-    alert("Display name updated!");
+
+    showSavePopup(
+      "Display name updated!"
+    );
+
   } catch (err) {
-    console.error("Display name error:", err);
-    alert("Failed to update display name.");
+
+    console.error(err);
+
+    showSavePopup(
+      "Failed to update display name."
+    );
+
   }
+
 }
 
-/**
- * update username
- */
+
+// USERNAME
+
+
 async function handleUsernameSubmit(event) {
+
   event.preventDefault();
 
-  const input = document.getElementById("newUsername");
-  const newUsername = input?.value.trim();
+  const input =
+    document.getElementById(
+      "newUsername"
+    );
+
+  const newUsername =
+    input.value.trim();
+
   if (!newUsername) {
-    alert("Enter a username.");
+
+    showSavePopup(
+      "Enter a username."
+    );
+
     return;
+
   }
 
-  const user = settingsAuth.currentUser;
+  const user =
+    settingsAuth.currentUser;
+
   if (!user) {
-    alert("Not logged in.");
+
+    showSavePopup(
+      "Not logged in."
+    );
+
     return;
+
   }
 
   try {
-    await getUserDocRef(user).set(
-      { username: newUsername },
-      { merge: true }
-    );
 
-    const usernameEl = document.getElementById("currentUsername");
-    if (usernameEl) usernameEl.textContent = newUsername;
+    const snap =
+      await getUserDocRef(user)
+      .get();
+
+    const data =
+      snap.data() || {};
+
+    const lastChange =
+      data.lastUsernameChange || 0;
+
+    const thirtyDays =
+      30 * 24 * 60 * 60 * 1000;
+
+    if (
+      Date.now() - lastChange
+      < thirtyDays
+    ) {
+
+      const daysLeft =
+        Math.ceil(
+
+          (
+            thirtyDays -
+            (
+              Date.now()
+              - lastChange
+            )
+          )
+
+          / (1000 * 60 * 60 * 24)
+
+        );
+
+      showSavePopup(
+        `You can change username again in ${daysLeft} day(s).`
+      );
+
+      return;
+
+    }
+
+    await getUserDocRef(user)
+    .set({
+
+      username:
+        newUsername,
+
+      lastUsernameChange:
+        Date.now()
+
+    }, {
+
+      merge: true
+
+    });
+
+    document.getElementById(
+      "currentUsername"
+    ).textContent =
+      newUsername;
 
     input.value = "";
-    alert("Username updated!");
+
+    showSavePopup(
+      "Username updated!"
+    );
+
   } catch (err) {
-    console.error("Username error:", err);
-    alert("Failed to update username.");
+
+    console.error(err);
+
+    showSavePopup(
+      "Failed to update username."
+    );
+
   }
+
 }
 
-/**
- * Wire up events
- */
-document.addEventListener("DOMContentLoaded", () => {
-  const saveAppearanceBtn = document.getElementById("saveAppearanceBtn");
-  if (saveAppearanceBtn) {
-    saveAppearanceBtn.addEventListener("click", handleSaveAppearance);
+
+// CHANGE PASSWORD
+
+
+async function handlePasswordChange(event) {
+
+  event.preventDefault();
+
+  const currentPassword =
+    document.getElementById(
+      "currentPassword"
+    ).value.trim();
+
+  const newPassword =
+    document.getElementById(
+      "newPassword"
+    ).value.trim();
+
+  const confirmPassword =
+    document.getElementById(
+      "confirmPassword"
+    ).value.trim();
+
+  const user =
+    settingsAuth.currentUser;
+
+  if (!user) {
+
+    showSavePopup(
+      "Not logged in."
+    );
+
+    return;
+
   }
 
-  const displayNameForm = document.getElementById("displayNameForm");
-  if (displayNameForm) {
-    displayNameForm.addEventListener("submit", handleDisplayNameSubmit);
+  if (
+    !currentPassword ||
+    !newPassword ||
+    !confirmPassword
+  ) {
+
+    showSavePopup(
+      "Fill in all password fields."
+    );
+
+    return;
+
   }
 
-  const usernameForm = document.getElementById("usernameForm");
-  if (usernameForm) {
-    usernameForm.addEventListener("submit", handleUsernameSubmit);
+  if (
+    newPassword !== confirmPassword
+  ) {
+
+    showSavePopup(
+      "Passwords do not match."
+    );
+
+    return;
+
   }
 
-  // (Password/email/2FA buttons stay as stubs for now)
+  try {
+
+    const credential =
+      firebase.auth
+      .EmailAuthProvider
+      .credential(
+
+        user.email,
+        currentPassword
+
+      );
+
+    await user
+      .reauthenticateWithCredential(
+        credential
+      );
+
+    await user
+      .updatePassword(
+        newPassword
+      );
+
+    document.getElementById(
+      "currentPassword"
+    ).value = "";
+
+    document.getElementById(
+      "newPassword"
+    ).value = "";
+
+    document.getElementById(
+      "confirmPassword"
+    ).value = "";
+
+    showSavePopup(
+      "Password updated successfully!"
+    );
+
+  } catch (err) {
+
+    console.error(err);
+
+    if (
+      err.code ===
+      "auth/wrong-password"
+    ) {
+
+      showSavePopup(
+        "Current password is incorrect."
+      );
+
+    } else {
+
+      showSavePopup(
+        "Failed to update password."
+      );
+
+    }
+
+  }
+
+}
+
+
+// CHANGE EMAIL
+
+
+async function handleEmailChange(event) {
+
+  event.preventDefault();
+
+  const newEmail =
+    document.getElementById(
+      "newEmail"
+    ).value.trim();
+
+  const password =
+    document.getElementById(
+      "confirmEmailPassword"
+    ).value.trim();
+
+  const user =
+    settingsAuth.currentUser;
+
+  if (!user) {
+
+    showSavePopup(
+      "Not logged in."
+    );
+
+    return;
+
+  }
+
+  if (
+    !newEmail ||
+    !password
+  ) {
+
+    showSavePopup(
+      "Fill in all email fields."
+    );
+
+    return;
+
+  }
+
+  try {
+
+    const credential =
+      firebase.auth
+      .EmailAuthProvider
+      .credential(
+
+        user.email,
+        password
+
+      );
+
+    await user
+      .reauthenticateWithCredential(
+        credential
+      );
+
+    await user
+      .updateEmail(
+        newEmail
+      );
+
+    await getUserDocRef(user)
+    .set({
+
+      email:
+        newEmail
+
+    }, {
+
+      merge: true
+
+    });
+
+    document.getElementById(
+      "currentEmail"
+    ).textContent =
+      newEmail;
+
+    document.getElementById(
+      "newEmail"
+    ).value = "";
+
+    document.getElementById(
+      "confirmEmailPassword"
+    ).value = "";
+
+    showSavePopup(
+      "Email updated successfully!"
+    );
+
+  } catch (err) {
+
+    console.error(err);
+
+    if (
+      err.code ===
+      "auth/wrong-password"
+    ) {
+
+      showSavePopup(
+        "Incorrect password."
+      );
+
+    }
+
+    else if (
+      err.code ===
+      "auth/invalid-email"
+    ) {
+
+      showSavePopup(
+        "Invalid email address."
+      );
+
+    }
+
+    else if (
+      err.code ===
+      "auth/requires-recent-login"
+    ) {
+
+      showSavePopup(
+        "Please log out and log back in."
+      );
+
+    }
+
+    else {
+
+      showSavePopup(
+        "Failed to update email."
+      );
+
+    }
+
+  }
+
+}
+
+
+// LOG OUT
+
+
+async function handleLogoutAllDevices() {
+
+  try {
+
+    await settingsAuth.signOut();
+
+    showSavePopup(
+      "Logged out successfully."
+    );
+
+    setTimeout(() => {
+
+      window.location.href =
+        "../index.html";
+
+    }, 1200);
+
+  } catch (err) {
+
+    console.error(err);
+
+    showSavePopup(
+      "Failed to log out."
+    );
+
+  }
+
+}
+
+
+// EVENTS
+
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+  document.getElementById(
+    "saveAppearanceBtn"
+  )?.addEventListener(
+
+    "click",
+    handleSaveAppearance
+
+  );
+
+  document.getElementById(
+    "displayNameForm"
+  )?.addEventListener(
+
+    "submit",
+    handleDisplayNameSubmit
+
+  );
+
+  document.getElementById(
+    "usernameForm"
+  )?.addEventListener(
+
+    "submit",
+    handleUsernameSubmit
+
+  );
+
+  document.getElementById(
+    "passwordForm"
+  )?.addEventListener(
+
+    "submit",
+    handlePasswordChange
+
+  );
+
+  document.getElementById(
+    "emailForm"
+  )?.addEventListener(
+
+    "submit",
+    handleEmailChange
+
+  );
+
+  document.getElementById(
+    "manageSessionsBtn"
+  )?.addEventListener(
+
+    "click",
+    handleLogoutAllDevices
+
+  );
+
 });
