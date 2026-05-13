@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>NetZone Arena</title>
+
+  <!-- MAIN CSS -->
+  <link
+    rel="stylesheet"
+    href="../assets/css/main.css"
+  >
+
+</head>
+
+<body class="arena-bg">
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+
+    <div class="nav-left">
+
+      <img
+        src="../assets/img/tmt.jpg"
+        class="nav-logo"
+      >
+
+      <span class="nav-title">
+        ManiNetZone
+      </span>
+
+    </div>
+
+    <div class="nav-center">
+
+      <a href="../hub.html">
+        Hub
+      </a>
+
+      <a href="typing-test.html">
+        Typing Test
+      </a>
+
+      <a href="arena.html">
+        NetZone Arena
+      </a>
+
+      <a href="quiz-selection.html">
+        Quiz Game
+      </a>
+
+      <a href="chat.html">
+        Chat
+      </a>
+
+      <a href="analytics.html">
+        Analytics
+      </a>
+
+      <a href="feedback.html">
+        Feedback
+      </a>
+
+    </div>
+
+    <div class="nav-right">
+
+      <!-- SETTINGS -->
+      <a href="settings.html">
+
+        <img
+          src="../assets/img/settings.png"
+          class="settings-icon"
+        >
+
+      </a>
+
+      <!-- LOGOUT -->
+      <button
+        id="logoutBtn"
+        class="btn danger"
+      >
+        Logout
+      </button>
+
+    </div>
+
+  </nav>
+
+  <!-- ARENA -->
+
+  <main class="arena-container">
+
+    <h1 class="arena-title">
+      🎯 NetZone Arena
+    </h1>
+
+    <p class="arena-subtext">
+      Hey! Destroy good software targets and avoid dangerous malware.
+    </p>
+
+    <!-- TOP STATS -->
+
+    <div class="arena-top">
+
+      <div class="arena-stat">
+        ⏱️ Time:
+        <span id="time">60</span>
+      </div>
+
+      <div class="arena-stat">
+        🎯 Score:
+        <span id="score">0</span>
+      </div>
+
+      <div class="arena-stat">
+        🔥 Combo:
+        <span id="combo">0</span>
+      </div>
+
+    </div>
+
+    <!-- GAME AREA -->
+
+    <div id="arena">
+
+      <button id="startArenaBtn">
+        START ARENA
+      </button>
+
+    </div>
+
+  </main>
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+  <!-- FIREBASE CONFIG -->
+  <script src="../assets/js/firebase-config.js"></script>
+
+  <!-- AUTH -->
+  <script src="../assets/js/auth.js"></script>
+
+  <!-- ARENA -->
+  <script src="../assets/js/arena.js"></script>
+
+  <div id="footer"></div>
+
+  <script src="../assets/js/footer.js"></script>
+
+</body>
+</html>
